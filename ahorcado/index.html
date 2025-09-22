@@ -1,48 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Ahorcado</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Ahorcado</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-    <div id="loading" class="hidden">Cargando diccionario...</div>
-    <div id="error" class="hidden">Error al cargar el diccionario. Por favor, verifica tu conexión o la ruta del archivo.</div>
+  <!-- Pantalla de Instrucciones -->
+  <div id="instruccionesDiv" class="overlay">
+    <div class="instrucciones-content">
+      <h1>📜 Instrucciones del Juego</h1>
 
-    <div class="container">
-      <h1>Ahorcado</h1>
-        <h2><span id="⏰timer"></span></h2> 
-      
+      <div class="instrucciones-bloque">
+        <h2>📝 Cómo jugar</h2>
+        <p>👋 Bienvenido al juego del <strong>Ahorcado</strong>. Tu misión es <strong>adivinar la palabra secreta</strong> antes de que se complete el dibujo del ahorcado.</p>
+      </div>
 
-        <div class="game-info">
-            <p>Nivel: <span id="level">1</span></p>
-            <p><span id="round">1</span></p>
-            <p>Ganadas: <span id="wins">0</span></p>
-            <p>Perdidas: <span id="losses">0</span></p>
-        </div>
+      <div class="instrucciones-bloque">
+        <h2>⚙️ Reglas del Juego</h2>
+        <ul>
+          <li>🔤 Usa el <strong>teclado en pantalla</strong> o tu <strong>teclado físico</strong> para elegir letras.</li>
+          <li>✅ Cada letra acertada se mostrará en la palabra oculta.</li>
+          <li>❌ Cada letra fallada añadirá una parte del dibujo del ahorcado.</li>
+          <li>💔 Tienes <strong>6 oportunidades</strong>; en el 7 fallo pierdes la ronda.</li>
+          <li>🏆 Si completas la palabra antes de quedarte sin intentos ganas la ronda.</li>
+        </ul>
+      </div>
 
-        <div class="game-area">
-            <div class="hangman-display">
-                <img id="hangman-img" src="./img/ahorcado0.png" alt="Ahorcado">
-            </div>
-            <div class="word-display">
-                <p id="word-to-guess"></p>
-            </div>
-        </div>
+      <div class="instrucciones-bloque">
+        <h2>📊 Progreso</h2>
+        <ul>
+          <li>🔢 El juego tiene <strong>15 rondas</strong> divididas en 3 niveles:</li>
+          <ul>
+            <li>Niveles 1–5 → Fácil</li>
+            <li>Niveles 6–10 → Normal</li>
+            <li>Niveles 11–15 → Difícil</li>
+          </ul>
+          <li>🏅 Se cuentan <strong>partidas ganadas y perdidas</strong>.</li>
+          <li>🆕 Puedes <strong>empezar una nueva partida</strong> en cualquier momento.</li>
+        </ul>
+      </div>
 
-        <div id="keyboard" class="keyboard">
-            <!-- El teclado se generará aquí con JavaScript -->
-        </div>
+      <div class="instrucciones-bloque">
+        <h2>🔘 Botones</h2>
+        <ul>
+          <li>🆕 <strong>Nueva partida</strong> → reinicia todo.</li>
+          <li>♻️ <strong>Limpiar resultados</strong> → pone a cero las estadísticas.</li>
+          <li>❌ <strong>Salir del juego</strong> → cierra la pestaña (con confirmación).</li>
+        </ul>
+      </div>
 
-        <div class="controls">
-            <button id="new-game-btn">Nueva Partida</button>
-            <button id="clear-stats-btn">Limpiar Contadores</button>
-            <button id="exit-btn">Salir del Juego</button>
-        </div>
+      <div class="instrucciones-bloque">
+        <h2>🎯 Objetivo</h2>
+        <p>¡Adivina tantas palabras como puedas y supera los tres niveles del ahorcado!</p>
+      </div>
+
+      <div class="checkbox-container">
+        <input type="checkbox" id="confirmInstructions">
+        <label for="confirmInstructions">He leído las instrucciones y estoy listo para jugar.</label>
+      </div>
+      <button id="startGameBtn" class="boton-emergente" disabled>Comenzar Juego</button>
+    </div>
+  </div>
+
+  <div id="loading" class="hidden">Cargando diccionario...</div>
+  <div id="error" class="hidden">Error al cargar el diccionario. Por favor, verifica tu conexión o la ruta del archivo.</div>
+
+  <div class="container">
+    <h1>Ahorcado</h1>
+<h2>⏰ <span id="timer"></span></h2>
+
+
+    <div class="game-info">
+      <p>Nivel: <span id="level">1</span></p>
+      <p>Ronda: <span id="round">1</span></p>
+      <p>Ganadas: <span id="wins">0</span></p>
+      <p>Perdidas: <span id="losses">0</span></p>
     </div>
 
-    <script src="script.js"></script>
+    <div class="game-area">
+      <div class="hangman-display">
+        <img id="hangman-img" src="./img/ahorcado0.png" alt="Ahorcado">
+      </div>
+      <div class="word-display">
+        <p id="word-to-guess"></p>
+      </div>
+    </div>
+
+    <div id="keyboard" class="keyboard">
+      <!-- El teclado se generará aquí con JavaScript -->
+    </div>
+
+    <div class="controls">
+      <button id="new-game-btn">Nueva Partida</button>
+      <button id="clear-stats-btn">Limpiar Contadores</button>
+      <button id="exit-btn">Salir del Juego</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
