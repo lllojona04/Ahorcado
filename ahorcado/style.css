@@ -164,3 +164,106 @@ h1 {
         gap: 10px;
     }
 }
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+/* Estilos de la pantalla de instrucciones (overlay) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Asegura que esté por encima de todo */
+}
+
+.instrucciones-content {
+    background-color: #f7e6c4; /* Color de fondo del cuadro de instrucciones */
+    border: 5px solid #a67c52; /* Borde doble, como en la imagen */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-sizing: border-box;
+    position: relative;
+    /* Efecto de borde 3D */
+    border-top: 5px solid #a67c52;
+    border-right: 5px solid #bda17f;
+    border-bottom: 5px solid #bda17f;
+    border-left: 5px solid #a67c52;
+}
+
+.instrucciones-content h1 {
+    font-family: 'Impact', sans-serif;
+    font-size: 3em;
+    color: #003366; /* Azul oscuro */
+    -webkit-text-stroke: 1px #fff; /* Borde blanco para el texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.instrucciones-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+}
+
+.checkbox-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.boton-emergente {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #007bff;
+    border: 2px solid #0056b3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.boton-emergente:disabled {
+    background-color: #cccccc;
+    border-color: #999999;
+    cursor: not-allowed;
+}
+
+/* Ocultar el contenido del juego al inicio */
+.container {
+    display: none; /* Oculta el juego principal inicialmente */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilos para el contenido del juego (si lo quieres ver al final) */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+}
+
+/* Asegúrate de que los estilos del juego principal no se vean afectados */
+.game-info, .game-area, .controls {
+    margin-bottom: 20px;
+}
