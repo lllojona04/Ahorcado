@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Ahorcado</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div id="loading" class="hidden">Cargando diccionario...</div>
+    <div id="error" class="hidden">Error al cargar el diccionario. Por favor, verifica tu conexión o la ruta del archivo.</div>
+
+    <div class="container">
+      <h1>Ahorcado</h1>
+        <h2><span id="⏰timer"></span></h2> 
+      
+
+        <div class="game-info">
+            <p>Nivel: <span id="level">1</span></p>
+            <p><span id="round">1</span></p>
+            <p>Ganadas: <span id="wins">0</span></p>
+            <p>Perdidas: <span id="losses">0</span></p>
+        </div>
+
+        <div class="game-area">
+            <div class="hangman-display">
+                <img id="hangman-img" src="./img/ahorcado0.png" alt="Ahorcado">
+            </div>
+            <div class="word-display">
+                <p id="word-to-guess"></p>
+            </div>
+        </div>
+
+        <div id="keyboard" class="keyboard">
+            <!-- El teclado se generará aquí con JavaScript -->
+        </div>
+
+        <div class="controls">
+            <button id="new-game-btn">Nueva Partida</button>
+            <button id="clear-stats-btn">Limpiar Contadores</button>
+            <button id="exit-btn">Salir del Juego</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
